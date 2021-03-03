@@ -22,7 +22,7 @@ connectDB();
 const Item = require('./models/itemModel');
 
 io.on("connection", socket => {
-    console.log(`New client connected ${socket.id}`);
+    console.log(`New client connected ${socket.id}`)
 
     socket.on("initial_data", async () => {
         const items = await Item.find({});

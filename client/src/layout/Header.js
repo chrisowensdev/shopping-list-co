@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import socketIOClient from 'socket.io-client';
+import io from 'socket.io-client';
 import "./header.css";
+
 
 let socket;
 
@@ -9,14 +10,14 @@ class Header extends Component {
     constructor() {
         super();
         this.state = {
-            endpoint: "http://10.0.0.167:3001/"
+            endpoint: "https://shopping-list-co.herokuapp.com/"
         };
 
         
     }
 
     componentDidMount() {
-        socket = socketIOClient(this.state.endpoint);
+        socket = io(this.state.endpoint, {query :{name: "Chris"}});
     }
 
     render() {
