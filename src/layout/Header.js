@@ -12,6 +12,10 @@ class Header extends Component {
             endpoint: "http://10.0.0.167:3001/"
         };
 
+        
+    }
+
+    componentDidMount() {
         socket = socketIOClient(this.state.endpoint);
     }
 
@@ -25,7 +29,6 @@ class Header extends Component {
                             List
                         </NavLink>
                         </li>
-
                     </ul>
                 </nav>
             </header>
