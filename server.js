@@ -40,11 +40,19 @@ io.on("connection", socket => {
 
     socket.on("check", async (itemToUpdate) => {
         const item = await Item.findById(itemToUpdate._id);
-        console.log(item);
         item.isChecked = !itemToUpdate.isChecked;
         await item.save();
         io.sockets.emit("change_data");
     });
+
+    socket.on("editNotes", async (newNotes) => {
+        console.log(newNotes);
+        const item = await Item.findById(newNotes._id);
+        console.log("item", item);
+        item.notes = newNotes.notes
+        await item.save();
+        io.sockets.emit("change_data");
+    })
 
     socket.on("delete", async (id) => {
         await Item.deleteOne({ _id: id});
