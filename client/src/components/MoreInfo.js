@@ -1,5 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
+
+import Notes from './Notes';
 
 
 const formatDate = (itemDate) => {
@@ -13,6 +14,12 @@ const MoreInfo = ({item}) => {
     return (
         <Details>
             Added: {formatDate(item.date)}
+            {
+                item.notes ? (
+                    <Notes item={item}/>
+                ) : null
+            }
+            
         </Details>
     )
 }
@@ -36,5 +43,7 @@ const Details = styled.div`
             opacity: 1;
         }
     }
+
+
     
 `;

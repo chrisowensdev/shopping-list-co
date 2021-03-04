@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 import { socket } from '../layout/Header';
 
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-
 
 const AddItem = ({addItemFunction}) => {
     const [item, setItem] = useState('');
     const [qty, setQty] = useState(1);
+    const [notes, setNotes] = useState('')
 
     const addItem = (e) => {
         e.preventDefault();
@@ -18,7 +17,8 @@ const AddItem = ({addItemFunction}) => {
                 item,
                 qty,
                 isChecked: false,
-                date: Date.now()
+                date: Date.now(),
+                notes
             }
             socket.emit('addItem', itemToAdd);
             addItemFunction();
@@ -34,6 +34,7 @@ const AddItem = ({addItemFunction}) => {
             <Form onSubmit={addItem}>
                 <input type="text" placeholder="Enter Item" value={item} onChange={e => setItem(e.target.value)}/>
                 <input type="number" value={qty} onChange={e => setQty(e.target.value)}/>
+                <textarea placeholder="Notes..." onChange={e => setNotes(e.target.value)}></textarea>
                 <button type="submit">Add Item</button>
             </Form>
         </>
@@ -47,7 +48,7 @@ const Form = styled.form`
     background: linear-gradient(to bottom, rgba(76, 200, 56, 0.62), rgba(19, 111, 117, 0.73));
     background-size: cover;
     border-radius: 5px;
-    margin: 10px auto;
+    margin: 5px auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -63,9 +64,14 @@ const Form = styled.form`
     }
 
     input {
-        margin: 10px;
+        margin: 5px;
         padding: 10px;
         border: none;
+        border-radius: 5px;
+    }
+    textarea {
+        resize: none;
+        margin: 5px;
         border-radius: 5px;
     }
 
