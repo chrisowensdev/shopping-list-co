@@ -52,7 +52,6 @@ display: flex;
 flex-direction:column;
   width: 90%;
   margin: 10px auto;
-  height: 53px;
   padding: 0 5px;
   align-items: center;
   border: 1px solid #000;
@@ -74,7 +73,7 @@ flex-direction:column;
   `}
 
   ${props => props.expand && `
-    height: 200px;
+    max-height: 200px;
   `} 
 
   .item-section{

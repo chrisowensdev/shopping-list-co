@@ -26,6 +26,15 @@ const Details = styled.div`
     color: #fff;
     padding: 10px;
     border-radius: 5px;
+    animation: expand .3s ease-in;
 
+    @keyframes expand {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
     
 `;
