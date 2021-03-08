@@ -17,7 +17,7 @@ My girlfriend and I always go to the store and try to make the most efficient us
 
 ## Screenshots
 
-![Walkthrough](screenshots/walkthrough.gif)
+![Walkthrough](screenshots/slwalkthrough.gif)
 
 ## Tech/framework used
 
